@@ -1,0 +1,8 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+const { title, description } = Astro.props.frontmatter || Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <p class="mt-2 mb-7">Breadcrumbs &gt; crumbs &gt; crumbs</p>
+  <slot />
+</BaseLayout>

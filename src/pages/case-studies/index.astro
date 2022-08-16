@@ -1,0 +1,20 @@
+---
+import Layout from '@layouts/SubpageLayout.astro';
+
+const posts = await Astro.glob('./*.mdx');
+const visiblePosts = posts.filter(({ frontmatter }) => !frontmatter.draft);
+---
+
+<Layout title="Case Studies" description="Explore how businesses like yours drive value through technology transformation">
+  <main>
+    <div class="grid grid-cols-2 gap-4">
+      {visiblePosts.map(({ frontmatter, url }) => (
+        <a class="block p-5 border text-left text-white bg-neutral-400" href={url}>
+          <img src={frontmatter.image} alt={frontmatter.title} class="h-23" />
+          <h2 class="text-3xl mt-4 mb-4">{frontmatter.title}</h2>
+          <p>{frontmatter.description}</p>
+        </a>
+      ))}
+    </div>
+  </main>
+</Layout>
